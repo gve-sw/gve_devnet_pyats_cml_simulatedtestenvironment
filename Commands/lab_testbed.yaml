@@ -1,0 +1,153 @@
+
+# Copyright (c) 2020 Cisco and/or its affiliates.
+
+# This software is licensed to you under the terms of the Cisco Sample
+# Code License, Version 1.1 (the "License"). You may obtain a copy of the
+# License at
+
+#                https://developer.cisco.com/docs/licenses
+
+# All use of the material herein must be in accordance with the terms of
+# the License. All rights not expressly granted by the License are
+# reserved. Unless required by applicable law or agreed to separately in
+# writing, software distributed under the License is distributed on an "AS
+# IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied.
+
+devices:
+  MBO-SPL-TST-010:
+    connections:
+      a:
+        command: open /f759db/n0/0
+        protocol: telnet
+        proxy: terminal_server
+      defaults:
+        class: unicon.Unicon
+    os: iosxe
+    passwords:
+      tacacs: cisco
+    series: csr1000v
+    tacacs:
+      username: cisco
+    type: router
+  MBO-SPL-TST-020:
+    connections:
+      a:
+        command: open /f759db/n3/0
+        protocol: telnet
+        proxy: terminal_server
+      defaults:
+        class: unicon.Unicon
+    os: iosxe
+    passwords:
+      tacacs: cisco
+    series: csr1000v
+    tacacs:
+      username: cisco
+    type: router
+  MBO-SPL-TST-030:
+    connections:
+      a:
+        command: open /f759db/n2/0
+        protocol: telnet
+        proxy: terminal_server
+      defaults:
+        class: unicon.Unicon
+    os: iosxe
+    passwords:
+      tacacs: cisco
+    series: csr1000v
+    tacacs:
+      username: cisco
+    type: router
+  MBO-SPL-TST-040:
+    connections:
+      a:
+        command: open /f759db/n1/0
+        protocol: telnet
+        proxy: terminal_server
+      defaults:
+        class: unicon.Unicon
+    os: iosxe
+    passwords:
+      tacacs: cisco
+    series: csr1000v
+    tacacs:
+      username: cisco
+    type: router
+  terminal_server:
+    connections:
+      cli:
+        ip: xxxxxxx
+        password: xxxxx
+        protocol: ssh
+        username: xxxxx
+    os: linux
+    type: linux
+testbed:
+  name: Jupyter Lab
+  passwords:
+    enable: '%ENV{PYATS_AUTH_PASS}'
+    line: '%ENV{PYATS_PASSWORD}'
+    tacacs: '%ENV{PYATS_PASSWORD}'
+  tacacs:
+    login_prompt: 'login:'
+    password_prompt: 'Password:'
+    username: '%ENV{PYATS_USERNAME}'
+topology:
+  MBO-SPL-TST-010:
+    interfaces:
+      GigabitEthernet1:
+        type: ethernet
+      GigabitEthernet2:
+        link: l0
+        type: ethernet
+      GigabitEthernet3:
+        link: l3
+        type: ethernet
+      GigabitEthernet4:
+        type: ethernet
+      Loopback0:
+        type: loopback
+  MBO-SPL-TST-020:
+    interfaces:
+      GigabitEthernet1:
+        type: ethernet
+      GigabitEthernet2:
+        link: l1
+        type: ethernet
+      GigabitEthernet3:
+        link: l0
+        type: ethernet
+      GigabitEthernet4:
+        type: ethernet
+      Loopback0:
+        type: loopback
+  MBO-SPL-TST-030:
+    interfaces:
+      GigabitEthernet1:
+        type: ethernet
+      GigabitEthernet2:
+        link: l2
+        type: ethernet
+      GigabitEthernet3:
+        link: l1
+        type: ethernet
+      GigabitEthernet4:
+        type: ethernet
+      Loopback0:
+        type: loopback
+  MBO-SPL-TST-040:
+    interfaces:
+      GigabitEthernet1:
+        type: ethernet
+      GigabitEthernet2:
+        link: l3
+        type: ethernet
+      GigabitEthernet3:
+        link: l2
+        type: ethernet
+      GigabitEthernet4:
+        type: ethernet
+      Loopback0:
+        type: loopback
